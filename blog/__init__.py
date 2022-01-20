@@ -22,8 +22,8 @@ app.config['SECRET_KEY'] = 'd0f4bcd97c8e139b9a0d31264cdd4c2d2d45109b6d8ff5fa'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # DB Connection changed to mysql
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://USERNAME:PASSWORD@csmysql.cs.cf.ac.uk:3306/USERNAME_DATABASE_NAME'
-app.config['SQLALCHEMY_DATABASE_URI'] = destination
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://c21070233:Andrea41192!@csmysql.cs.cf.ac.uk:3306/c21070233_c21070233'
+# app.config['SQLALCHEMY_DATABASE_URI'] = destination
 
 db = SQLAlchemy(app)
 
