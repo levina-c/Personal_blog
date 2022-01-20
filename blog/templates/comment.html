@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Comment</h1>
+<img src="{{ url_for('static', filename='img/' + post.image_file) }}">
+<p>"{{ post.title }}" &nbsp Author: {{ post.user.username }}</p>
+<pre class="postContent">
+    {% filter markdown %}
+    {{ post.content }}
+    {% endfilter %}
+</pre>
+{% if current_user.is_authenticated %}
+<form method="POST" action="">
+    {{ commentBox.csrf_token }}
+    <p>{{ commentBox.content.label }} {{ commentBox.content }}</p>
+    <input type="submit" value="Post">
+</form>
+{% endif %}
+<p>{{ post.comment.count() }} comment</p>
+{% for comment in post.comment %}
+    <p>{{ comment.user.username }}: {{ comment.content }}</p>
+{% endfor %}
+{% endblock content %}

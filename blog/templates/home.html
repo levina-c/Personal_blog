@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if current_user.is_anonymous %}
+  <h1>Hello, Guest!</h1>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+  <h1>Hello, {{ current_user.first_name }}!</h1>
+{% endif %}
+
+{% for post in posts %}
+<div class="blog_preview">
+  <p><a href="{{ url_for('post', post_id=post.id) }}">
+    <img class="postimg_inpost" src="{{ url_for('static', filename='img/' + post.image_file) }}">
+  </p>
+    <a class="post_title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+    <p>{{ post.date.strftime('%d-%m-%Y') }} &nbsp by {{ post.user.username }}</p>
+    <p>{{ post.content|truncate(50, False, '...')}}</p>
+  <h6 class="readMore"><a href="{{ url_for('post', post_id=post.id) }}">Read More</h6>
+</div>
+{% endfor %}
+{% endblock content %}

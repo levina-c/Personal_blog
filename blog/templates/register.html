@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if user_reg_form.errors %}
+    <h1>Sorry, there is a problem with your registration</h1>
+    {% for field, errors in user_reg_form.errors.items() %}
+        <small>
+            <p>{{ " ".join(errors) }}</p>
+        </small>
+    {% endfor %}
+{% endif %}
+
+<form method="POST" action="">
+  {{ user_reg_form.csrf_token }}
+  <p>{{ user_reg_form.username.label }} {{ user_reg_form.username }}</p>
+  <p>{{ user_reg_form.first_name.label }} {{ user_reg_form.first_name }}</p>
+  <p>{{ user_reg_form.email.label }} {{ user_reg_form.email }}</p>
+  <p>{{ user_reg_form.password.label }} {{ user_reg_form.password }}</p>
+  <p>{{ user_reg_form.confirm_password.label }} {{ user_reg_form.confirm_password }}</p>
+  <input type="submit" value="Register">
+</form>
+
+<!-- {% for error in user_reg_form.errors %}
+  <span style="color: red;">[{{ error }}]</span>
+{% endfor %} -->
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="post_in_post">
+    <h2 class="indi_post_title">
+        <span class="post_info" >"{{ post.title }}"</span> &nbsp
+        <span class="post_info" >Author: {{ post.user.username }}</span>
+        <span class="avg_rating">Rating: {{ avg_score|round(1, 'ceil') }}</span>
+    </h2>
+    <img class="postimg_inpost" src="{{ url_for('static', filename='img/' + post.image_file) }}">
+    <pre class="postContent">
+    {% filter markdown %}
+    {{ post.content }}
+    {% endfilter %}
+    </pre>
+</div>
+
+<form method="POST" action="">
+    {{ ratingscale.csrf_token }}
+    <P>{{ ratingscale.star.label }}</P>
+    <P>{{ ratingscale.star }}</P>
+    <input type="submit" value="Rate">
+</form>
+<form method="POST" action="">
+    {{ commentBox.csrf_token }}
+    <p>{{ commentBox.content.label }} {{ commentBox.content }}</p>
+    <input type="submit" value="Post">
+</form>
+<p>{{ post.comment.count() }} comment</p>
+{% for comment in post.comment %}
+    <p>{{ comment.user.username }}: {{ comment.content }}</p>
+{% endfor %}
+{% endblock content %}
