@@ -5,10 +5,10 @@ from blog.models import User, Rating
 
 class RegistrationForm(FlaskForm):
   username = StringField('Username',validators=[InputRequired(),Regexp('^[a-z]{5,25}$',message='Your username should be between 5 and 25 characters long, and can only contain lowercase letters.')])
-  first_name = StringField('First name',validators=[InputRequired(),Regexp('^[A-Za-z]{4,25}$',message='Your first name contains invalid characters.')])
+  first_name = StringField('First name',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your first name contains invalid characters.')])
   email = EmailField('Email', validators=[InputRequired(), Email(message="Invalid email. Please check.")] )
-  password = PasswordField('Password',validators=[InputRequired()])
-  confirm_password =  PasswordField('Repeat Password',validators=[InputRequired(),Regexp('^[A-Za-z]{4,25}$',message='Your password contains invalid characters.'), EqualTo('password', message='Passwords do not match. Try again')])
+  password = PasswordField('Password',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your password contains invalid characters.')])
+  confirm_password =  PasswordField('Repeat Password',validators=[InputRequired(), EqualTo('password', message='Passwords do not match. Try again')])
   submit = SubmitField('Register')
 
   def validate_username(self, username):

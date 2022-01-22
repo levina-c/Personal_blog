@@ -53,13 +53,14 @@ def register():
     user = User(username=user_reg_form.username.data, first_name=user_reg_form.first_name.data, email=user_reg_form.email.data, password=user_reg_form.password.data)
     db.session.add(user)
     db.session.commit()
-    flash('Registration successful!')
+    flash('Registration successful! You can log in now.')
     return redirect(url_for('registered'))
     
   return render_template('register.html',title='Register',user_reg_form=user_reg_form)
 
 @app.route("/registered")
 def registered():
+  return redirect(url_for('home'))
   return render_template('registered.html', title='registered')
 
 @app.route("/login",methods=['GET','POST'])

@@ -12,12 +12,21 @@
 
 <form method="POST" action="">
   {{ user_reg_form.csrf_token }}
-  <p>{{ user_reg_form.username.label }} {{ user_reg_form.username }}</p>
-  <p>{{ user_reg_form.first_name.label }} {{ user_reg_form.first_name }}</p>
-  <p>{{ user_reg_form.email.label }} {{ user_reg_form.email }}</p>
-  <p>{{ user_reg_form.password.label }} {{ user_reg_form.password }}</p>
-  <p>{{ user_reg_form.confirm_password.label }} {{ user_reg_form.confirm_password }}</p>
-  <input type="submit" value="Register">
+  <div class="registrationform">
+    <p>{{ user_reg_form.username.label }}</p>
+    <p>{{ user_reg_form.username }}</p>
+    <p>{{ user_reg_form.first_name.label }}</p>
+    <p>{{ user_reg_form.first_name }}</p>
+    <p>{{ user_reg_form.email.label }}</p>
+    <p>{{ user_reg_form.email }}</p>
+    <p>{{ user_reg_form.password.label }}</p>
+    <p>{{ user_reg_form.password }}</p>
+    <p>{{ user_reg_form.confirm_password.label }}</p>
+    <p>{{ user_reg_form.confirm_password }}</p>
+  </div>
+  <div class="submitbutton">
+    <input type="submit" value="Register">
+  </div>
 </form>
 
 <!-- {% for error in user_reg_form.errors %}

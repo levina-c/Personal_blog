@@ -16,7 +16,7 @@
     <span class="navbar">
         <!-- <nav> -->
       <a href="{{ url_for('home') }}">Home</a>&nbsp
-      <a href="{{ url_for('about') }}">About Us</a>&nbsp
+      <a href="{{ url_for('about') }}">About</a>&nbsp
       {% if current_user.is_anonymous %}
         <a href="{{ url_for('register') }}">Register</a>
         <a href="{{ url_for('login') }}">Login</a>

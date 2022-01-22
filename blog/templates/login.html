@@ -1,11 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-<form method="POST" action="">
-  {{ user_login_form.csrf_token }}
-  <p>{{ user_login_form.email.label }}</p>
-  <p>{{ user_login_form.email }}</p>
-  <p>{{ user_login_form.password.label }}</p>
-  <p>{{ user_login_form.password }}</p>
-  <p class="submitbutton"><input type="submit" value="Login"></p>
-</form>
+
+  <form method="POST" action="">
+    {{ user_login_form.csrf_token }}
+    <div class="login_form">
+      <p>{{ user_login_form.email.label }}</p>
+      <p>{{ user_login_form.email }}</p>
+      <p>{{ user_login_form.password.label }}</p>
+      <p>{{ user_login_form.password }}</p>
+    </div>
+    <div>
+      <p class="submitbutton"><input type="submit" value="Login"></p>
+    </div>
+  </form>
+</div>
 {% endblock content %}
