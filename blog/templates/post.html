@@ -3,20 +3,20 @@
 <div class="indipost">
     <div class="post_in_post_content">
         <div class="post_info">
-            <h3 class="Post_inpost_title">{{ post.title }}</h3>
+            <h3 class="post_title" id="Post_inpost_title">{{ post.title }}</h3>
             <h3 class="author" >Author: {{ post.user.username }}</h3>
         </div>
         <h3 class="avg_rating">Rating: {{ avg_score|round(1, 'ceil') }}</h3>  
     </div>
     <div class="postimg_inpost">
         <img src="{{ url_for('static', filename='img/' + post.image_file) }}">
-        <pre class="postContent">
+        <pre class="detailed_description">
             {{ post.content }}
         </pre>
     </div>
 </div>
 <div class="rating_comment">
-    <form class="rating_radio" method="POST" action="">
+    <form class="post_rating" method="POST" action="">
         {{ ratingscale.csrf_token }}
         <h4>{{ ratingscale.star.label }}</h4>
         {% for star in ratingscale.star%}
@@ -32,7 +32,7 @@
     </form>
 </div>
 <h4 class="comment_count">{{ post.comment.count() }} comment(s)</h4>
-<div class="comments">
+<div class="comment_text">
     {% for comment in post.comment %}
         <hr>
         <span class="indi_comment">

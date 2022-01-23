@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="home">
-  <div>
+  <div id="pers_greet">
   {% if current_user.is_anonymous %}
     <h1>Hello, Guest!</h1>
   {% endif %}
@@ -11,8 +11,15 @@
     <h1>Hello, {{ current_user.first_name }}!</h1>
   {% endif %}
   </div>
+  <div class="sort_by">
+    <form method="POST" action="">
+      {{ sortBy.csrf_token }}
+      <p>{{ sortBy.order.label }} &nbsp {{ sortBy.order }}</p> &nbsp
+      <input class="submitbutton" type="submit" value="Sort"></input>
+    </form>
+  </div>
   {% for post in posts %}
-  <div class="blog_preview">
+  <div class="blog_post">
     <div>
       <a href="{{ url_for('post', post_id=post.id) }}"><img class="postimg_inpost" src="{{ url_for('static', filename='img/' + post.image_file) }}"></a>
     </div>
@@ -25,11 +32,11 @@
       </span>
     </div>
     <div>
-      <p class="post_content" >{{ post.content|truncate(100, False, '...')}}</p>
+      <p class="short_description" >{{ post.content|truncate(100, False, '...')}}</p>
     </div>
   </div>
-  <div>
-    <h6 class="readMore"><a href="{{ url_for('post', post_id=post.id) }}">Read More</h6>
+  <div class="readMore" >
+    <h6><a href="{{ url_for('post', post_id=post.id) }}">Read More</h6></a>
   </div>
   <hr>
   {% endfor %}

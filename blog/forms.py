@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField, TextAreaField, RadioField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, TextAreaField, RadioField, SelectField
 from wtforms.validators import InputRequired, EqualTo, ValidationError, Regexp, Email
 from blog.models import User, Rating
 
 class RegistrationForm(FlaskForm):
-  username = StringField('Username',validators=[InputRequired(),Regexp('^[a-z]{5,25}$',message='Your username should be between 5 and 25 characters long, and can only contain lowercase letters.')])
+  username = StringField('Username',validators=[InputRequired(),Regexp('^[A-Za-z0-9]{5,20}$',message='Your username should be between 5 and 20 characters long and only contains letters and numbers.')])
   first_name = StringField('First name',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your first name contains invalid characters.')])
   email = EmailField('Email', validators=[InputRequired(), Email(message="Invalid email. Please check.")] )
-  password = PasswordField('Password',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your password contains invalid characters.')])
+  password = PasswordField('Password',validators=[InputRequired(),Regexp('^[A-Za-z0-9]{4,20}$',message='Your password contains invalid characters.')])
   confirm_password =  PasswordField('Repeat Password',validators=[InputRequired(), EqualTo('password', message='Passwords do not match. Try again')])
   submit = SubmitField('Register')
 
@@ -45,3 +45,7 @@ class RatingForm(FlaskForm):
       print(list_of_ratedpost)
     if current_user.id in list_of_ratedpost:
       raise ValidationError('You\'ve already rated this post.')
+
+class PostOrder(FlaskForm):
+  order = SelectField('Sort by', validators=[InputRequired()],choices=[('date_desc', 'Most Recent'), ('date_asc', 'Oldest')], default='date_desc')
+  submit = SubmitField('Sort')

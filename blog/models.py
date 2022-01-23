@@ -4,12 +4,6 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func
 
-# ratings = db.Table('ratings',
-#       db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-#       db.Column('post_id', db.Integer, db.ForeignKey('post.id'), primary_key=True),
-#       db.Column('rating', db.Integer, db.ForeignKey('rating.id'), primary_key=True)
-# )
-
 class Rating(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key=True)
   star = db.Column(db.Integer())

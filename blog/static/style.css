@@ -20,47 +20,59 @@ body{
     margin: auto;
 }
 
-.home .blog_preview {
+.home .sort_by form {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+
+.home .blog_post {
     display: flex;
     flex-direction: column;
     width: 80%;
     overflow: hidden;
 }
 
-.home .blog_preview .postimg_inpost {
+.home .blog_post .postimg_inpost {
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
 }
 
-.home .blog_preview .blog_text{
+.home .blog_post .blog_text{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     flex-basis: auto;
+    max-height: 50%;
+    height: 60px;
 }
 
-.home .blog_preview .blog_text .post_title {
+.home .blog_post .blog_text .post_title {
     font-weight: bolder;
     font-size: 30px;
 }
 
-.home .blog_preview .blog_text .time_author {
+.home .blog_post .blog_text .time_author {
     font-weight: bolder;
     font-size: 20px;
 }
 
-.home .blog_preview .post_content {
+.home .blog_post .short_description {
     font-weight: 400;
     font-size: 17px;
 }
 
-.home .readMore {
+.home .readMore h6 {
     font-size: 17px;
-    flex-shrink: 3;
-    align-self: flex-start;
-    padding: 0px;
+    align-self: center;
+}
+
+.home .readMore {
+    display: flex;
+    max-height: 30%;
+    height: 60px;
 }
 
 h1{
@@ -81,7 +93,12 @@ span {
     margin:20px;
 }
 
-.navbar {
+.BTmain a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+nav {
     font-family: "Karla", sans-serif;
     font-weight: bold;
     color: black;
@@ -103,16 +120,34 @@ a:hover {
     text-decoration-line:underline;
 }
 
+footer {
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 20px;
+}
+
 hr {
     width: 60%;
     height: 1px;
     border: 0;
     background-color: gainsboro;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+#navbarhr {
+    margin-bottom:10px;
+    margin-top:0;
 }
 
 img {
     min-width: 100%;
-    /* position: absolute; */
+}
+
+h1 {
+    text-align: center;
 }
 
 form {
@@ -126,15 +161,6 @@ form .submitbutton {
     align-self: center;
     margin: auto;
 }
-
-/* .bgimg {
-    position: relative;
-    display: flex;
-    padding-top: 20px;
-    justify-content: center;
-    width: 100%;
-    overflow: hidden;
-} */
 
 .indipost {
     display:flex;
@@ -173,7 +199,7 @@ form .submitbutton {
     column-gap: 30px;
 }
 
-.indipost .post_in_post_content .post_info .Post_inpost_title {
+.indipost .post_in_post_content .post_info #Post_inpost_title {
     font-size: 25px;
 }
 
@@ -192,14 +218,14 @@ form .submitbutton {
 
 }
 
-.rating_comment .rating_radio {
+.rating_comment .post_rating {
     display: flex;
     flex-direction: row;
     column-gap: 20px;
     align-items:baseline;
 }
 
-.rating_comment .rating_radio p {
+.rating_comment .post_rating p {
     font-size: 17px;
 }
 
@@ -209,24 +235,45 @@ form .submitbutton {
     padding-top: 30px;
 }
 
-.comments {
+.comment_text {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-.comments .indi_comment {
+.comment_text .indi_comment {
     display: flex;
     flex-direction: row;
     padding-top: -30px;
 }
 
-.comments .indi_comment p {
+.comment_text .indi_comment p {
     padding-left: 20px; 
     margin: auto;
 }
 
-.comments .indi_comment h5 {
+.comment_text .indi_comment h5 {
     font-size: 15px;
+}
+
+button {
+    float:right;
+    font-family: "Karla", sans-serif;
+    border:none;
+    outline: none;
+    color:black;
+    background-color: transparent;
+    font-size: 17px;
+    margin: 20px;
+    margin-bottom: 30px;
+}
+
+button:hover{
+    color:lightgrey;
+    text-decoration-line:underline;
+}
+
+.login_error p {
+    text-align: center;
 }

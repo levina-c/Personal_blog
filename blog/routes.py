@@ -2,17 +2,23 @@ from flask import render_template, url_for, request, redirect, flash, current_ap
 from sqlalchemy.sql import func
 from blog import app, db
 from blog.models import User, Post, Comment, Rating
-from blog.forms import RegistrationForm, LoginForm, CommentForm, RatingForm
+from blog.forms import RegistrationForm, LoginForm, CommentForm, RatingForm, PostOrder
 from flask_login import login_user, logout_user, current_user, login_required, login_manager
 from statistics import mean
-from sqlalchemy import desc
+from sqlalchemy import desc, asc
 
-@app.route("/")
-
-@app.route("/home")
+@app.route("/", methods=['GET','POST'])
+@app.route("/home", methods=['GET','POST'])
 def home():
-  posts=Post.query.order_by(desc(Post.date)).all()
-  return render_template('home.html',posts=posts)
+  sortBy = PostOrder(order='date_desc')
+  posts=Post.query.order_by(desc(Post.id)).all()
+  selected = sortBy.order.data
+  if sortBy.validate_on_submit():
+    if selected == 'date_desc':
+      posts=Post.query.order_by(desc(Post.date)).all()
+    else:
+      posts=Post.query.order_by(asc(Post.date)).all()
+  return render_template('home.html', posts=posts, sortBy=sortBy)
 
 @app.route("/about")
 def about():
@@ -53,14 +59,15 @@ def register():
     user = User(username=user_reg_form.username.data, first_name=user_reg_form.first_name.data, email=user_reg_form.email.data, password=user_reg_form.password.data)
     db.session.add(user)
     db.session.commit()
-    flash('Registration successful! You can log in now.')
+    login_new_user = User.query.filter_by(email=user_reg_form.email.data).first()
+    login_user(login_new_user)
+    flash('Registration successful!')
     return redirect(url_for('registered'))
     
   return render_template('register.html',title='Register',user_reg_form=user_reg_form)
 
 @app.route("/registered")
 def registered():
-  return redirect(url_for('home'))
   return render_template('registered.html', title='registered')
 
 @app.route("/login",methods=['GET','POST'])
@@ -74,6 +81,7 @@ def login():
       return redirect(url_for('home'))
     else:
       flash('Incorrect email or password supplied.')
+      return redirect(url_for('loginerror'))
   return render_template('login.html',title='Login', user_login_form=user_login_form)
 
 @app.route("/logout")
@@ -81,3 +89,11 @@ def logout():
   logout_user()
   flash('You have been logged out')
   return redirect(url_for('home'))
+
+@app.route("/privacypolicy")
+def privacypolicy():
+  return render_template('privacypolicy.html', title="Privacy Policy")
+
+@app.route("/loginerror")
+def loginerror():
+  return render_template('loginerror.html', title="Log in failed")

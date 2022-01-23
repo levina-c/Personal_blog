@@ -13,24 +13,20 @@
 <form method="POST" action="">
   {{ user_reg_form.csrf_token }}
   <div class="registrationform">
-    <p>{{ user_reg_form.username.label }}</p>
-    <p>{{ user_reg_form.username }}</p>
-    <p>{{ user_reg_form.first_name.label }}</p>
-    <p>{{ user_reg_form.first_name }}</p>
-    <p>{{ user_reg_form.email.label }}</p>
-    <p>{{ user_reg_form.email }}</p>
-    <p>{{ user_reg_form.password.label }}</p>
-    <p>{{ user_reg_form.password }}</p>
-    <p>{{ user_reg_form.confirm_password.label }}</p>
-    <p>{{ user_reg_form.confirm_password }}</p>
+    <p class="username_new">{{ user_reg_form.username.label }}</p>
+    <p class="username_new">{{ user_reg_form.username }}</p>
+    <p class="first_name_new">{{ user_reg_form.first_name.label }}</p>
+    <p class="first_name_new">{{ user_reg_form.first_name }}</p>
+    <p class="email_new">{{ user_reg_form.email.label }}</p>
+    <p class="email_new">{{ user_reg_form.email }}</p>
+    <p class="password_new">{{ user_reg_form.password.label }}</p>
+    <p class="password_new">{{ user_reg_form.password }}</p>
+    <p class="password_confirm">{{ user_reg_form.confirm_password.label }}</p>
+    <p class="password_confirm">{{ user_reg_form.confirm_password }}</p>
   </div>
   <div class="submitbutton">
     <input type="submit" value="Register">
   </div>
 </form>
-
-<!-- {% for error in user_reg_form.errors %}
-  <span style="color: red;">[{{ error }}]</span>
-{% endfor %} -->
 
 {% endblock content %}

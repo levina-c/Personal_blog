@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="login_error">
+    <h1>Login Unsuccessful!</h1>
+    <p><a href="{{ url_for('login')}}">Login again</a></p>
+</div>
+{% endblock content %}
