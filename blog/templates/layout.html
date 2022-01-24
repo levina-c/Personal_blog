@@ -6,12 +6,12 @@
   <link rel=stylesheet type=text/css href="{{ url_for('static',
   filename='style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&family=Quicksand&display=swap" rel="stylesheet">
-  <title>F for Flask</title>
+  <title>Levina Chan</title>
 </head>
 <body>
   <header class="top">
     <h1 class="blogtitle">
-        <span class="BTmain"><a href="{{ url_for('home') }}">F for Flask</a></span>
+        <span class="BTmain"><a href="{{ url_for('home') }}">Levina Chan</a></span>
     </h1>
     <nav id="top_navig_bar">
       <a id="home" href="{{ url_for('home') }}">Home</a>&nbsp
@@ -37,10 +37,17 @@
   </div>
   {% block content %}
   {% endblock %}
-  <button onclick="backToTop()" id="topbtn">Back To Top</button>
+  <div class="back_to_top">
+    <button onclick="backToTop()" id="topbtn">Back To Top</button>
+  </div>
   <footer id="footer">
-    <p><a href="{{ url_for('privacypolicy') }}">Privacy Policy</a></p>
-    <p>©2022 by Levina Chan</p>
+    <div class="contacts">
+      <p>Contact Details:</p>
+      <p>Email: <a href="mailto: levina@levina.com">levina@levina.com</a></p>
+      <p>Linkedin: <a href="www.linkedin.com/in/levina">www.linkedin.com/in/levina</a></p>
+    </div>
+    <p id="privacypolicy"><a href="{{ url_for('privacypolicy') }}">Privacy Policy</a></p>
+    <p id="copyright">©2022 by Levina Chan</p>
   </footer>
 </body>
 </html>

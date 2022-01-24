@@ -15,6 +15,7 @@
         </pre>
     </div>
 </div>
+{% if current_user.is_authenticated %}
 <div class="rating_comment">
     <form class="post_rating" method="POST" action="">
         {{ ratingscale.csrf_token }}
@@ -31,6 +32,7 @@
         <input type="submit" value="Post">
     </form>
 </div>
+{% endif %}
 <h4 class="comment_count">{{ post.comment.count() }} comment(s)</h4>
 <div class="comment_text">
     {% for comment in post.comment %}
@@ -40,5 +42,14 @@
             <p>{{ comment.content }}</p>
         </span>
     {% endfor %}
+</div>
+<div class="to_posts">
+    {% if post.id > 1 %}
+        <span><a href="{{ url_for('post', post_id=post.id-1) }}">Previous: {{ previousTitle.title }}</a></span>
+    {% endif %}
+        <span><a href="{{ url_for('home') }} " id="to_all_post">All posts</a></span>
+    {% if post.id < numberOfPosts %}
+        <span><a href="{{ url_for('post', post_id=post.id+1) }}">Next: {{ nextTitle.title }}</a></span>
+    {% endif %}
 </div>
 {% endblock content %}

@@ -25,11 +25,14 @@ def about():
   return render_template('about.html', title='About')
 
 @app.route("/post/<int:post_id>", methods=['GET','POST'])
-@login_required
+# @login_required
 def post(post_id):
   post=Post.query.get_or_404(post_id)
   commentBox = CommentForm()
   ratingscale = RatingForm()
+  numberOfPosts = Post.query.count()
+  nextTitle = Post.query.get(post_id+1)
+  previousTitle = Post.query.get(post_id-1)
   #get the whole row by filtering the post id
   get_score = Rating.query.filter_by(post_id=post.id).all()
   #get the data from the star column only
@@ -50,7 +53,7 @@ def post(post_id):
     db.session.commit()
     flash('Your comment has been published.')
     return redirect(url_for("post", post_id=post.id))
-  return render_template('post.html', title='Post', post=post, ratingscale=ratingscale, avg_score=avg_score, commentBox=commentBox)
+  return render_template('post.html', title='Post', post=post, ratingscale=ratingscale, avg_score=avg_score, commentBox=commentBox, numberOfPosts=numberOfPosts, nextTitle=nextTitle, previousTitle=previousTitle)
 
 @app.route("/register",methods=['GET','POST'])
 def register():
@@ -87,7 +90,7 @@ def login():
 @app.route("/logout")
 def logout():
   logout_user()
-  flash('You have been logged out')
+  flash('You have been logged out.')
   return redirect(url_for('home'))
 
 @app.route("/privacypolicy")

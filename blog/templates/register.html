@@ -1,14 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
 
-{% if user_reg_form.errors %}
+<div class="errors">
+  {% if errors %}
     <h1>Sorry, there is a problem with your registration</h1>
-    {% for field, errors in user_reg_form.errors.items() %}
-        <small>
-            <p>{{ " ".join(errors) }}</p>
-        </small>
-    {% endfor %}
-{% endif %}
+  {% endif %}
+
+  {% if user_reg_form.errors %}
+      {% for field, errors in user_reg_form.errors.items() %}
+          <small>
+              <p>{{ " ".join(errors) }}</p>
+          </small>
+      {% endfor %}
+  {% endif %}
+</div>
 
 <form method="POST" action="">
   {{ user_reg_form.csrf_token }}

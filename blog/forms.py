@@ -4,11 +4,11 @@ from wtforms.validators import InputRequired, EqualTo, ValidationError, Regexp, 
 from blog.models import User, Rating
 
 class RegistrationForm(FlaskForm):
-  username = StringField('Username',validators=[InputRequired(),Regexp('^[A-Za-z0-9]{5,20}$',message='Your username should be between 5 and 20 characters long and only contains letters and numbers.')])
-  first_name = StringField('First name',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your first name contains invalid characters.')])
+  username = StringField('Username',validators=[InputRequired(),Regexp('^[A-Za-z0-9]{5,20}$',message='Your username should be between 5 and 20 characters long and only contain letters and numbers.')])
+  first_name = StringField('First name',validators=[InputRequired(),Regexp('^[A-Za-z]{4,20}$',message='Your first name should be between 4 and 20 characters and only contain alphabets.')])
   email = EmailField('Email', validators=[InputRequired(), Email(message="Invalid email. Please check.")] )
   password = PasswordField('Password',validators=[InputRequired(),Regexp('^[A-Za-z0-9]{4,20}$',message='Your password contains invalid characters.')])
-  confirm_password =  PasswordField('Repeat Password',validators=[InputRequired(), EqualTo('password', message='Passwords do not match. Try again')])
+  confirm_password =  PasswordField('Repeat Password',validators=[InputRequired(), EqualTo('password', message='Passwords do not match. Please try again.')])
   submit = SubmitField('Register')
 
   def validate_username(self, username):
@@ -43,8 +43,8 @@ class RatingForm(FlaskForm):
     for user in get_ratedpost:
       list_of_ratedpost.append(rating.user_id)
       print(list_of_ratedpost)
-    if current_user.id in list_of_ratedpost:
-      raise ValidationError('You\'ve already rated this post.')
+      if current_user.id is not None:
+        raise ValidationError('You\'ve already rated this post.')
 
 class PostOrder(FlaskForm):
   order = SelectField('Sort by', validators=[InputRequired()],choices=[('date_desc', 'Most Recent'), ('date_asc', 'Oldest')], default='date_desc')

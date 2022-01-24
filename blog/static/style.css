@@ -9,7 +9,7 @@ header {
 
 body{
     font-family: "Karla", sans-serif;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 .home {
@@ -18,6 +18,23 @@ body{
     align-items: center;
     justify-content: center;
     margin: auto;
+}
+
+.home #pers_greet{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size:17px;
+    max-width: 700px;
+    margin:auto;
+    padding-bottom: 40px;
+}
+
+.home .sort_by {
+    align-self:flex-end;
+    padding-right: 20px;
 }
 
 .home .sort_by form {
@@ -121,11 +138,21 @@ a:hover {
 }
 
 footer {
-    position:relative;
+    font-weight: 400;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     column-gap: 20px;
+    line-height: 0;
+    background-color: rgb(245, 245, 245);
+}
+
+footer .contacts{
+    text-align: center;
+    line-height: 0.5;
+    padding-left: 20px;
+    margin-bottom: -3px;
 }
 
 hr {
@@ -133,8 +160,8 @@ hr {
     height: 1px;
     border: 0;
     background-color: gainsboro;
-    margin-bottom: 50px;
-    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 #navbarhr {
@@ -148,6 +175,14 @@ img {
 
 h1 {
     text-align: center;
+}
+
+.aboutme{
+    display:flex;
+    margin:auto;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 500px;
 }
 
 form {
@@ -257,23 +292,55 @@ form .submitbutton {
     font-size: 15px;
 }
 
-button {
-    float:right;
+.back_to_top{
+    position:sticky;
+    bottom:30px;
+    display: flex;
+    justify-content: right;
+    align-self: flex-start;
+    /* margin: 20px; */
+}
+
+#topbtn {
     font-family: "Karla", sans-serif;
+    font-weight: 600;
     border:none;
     outline: none;
     color:black;
     background-color: transparent;
     font-size: 17px;
-    margin: 20px;
-    margin-bottom: 30px;
 }
 
-button:hover{
+#topbtn:hover{
     color:lightgrey;
     text-decoration-line:underline;
+}
+
+.to_posts {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Karla", sans-serif;
+    font-weight: 600;
+    color:black;
+    border: none;
+    outline: none;
+    text-decoration-line:underline;
+    background-color: transparent;
+    font-size: 17px;
+    margin:5px;
+    position:sticky;
+    bottom:10px;
 }
 
 .login_error p {
     text-align: center;
 }
+
+.errors {
+    text-align: center;
+}
+
+.errors small{
+    font-size: 17px;
+}
+
