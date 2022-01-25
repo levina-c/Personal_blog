@@ -240,7 +240,6 @@ form .submitbutton {
 }
 
 .indipost .postimg_inpost .detailed_description {
-    /* text-align:justify; */
     font-family: "Karla", sans-serif;
     white-space: pre-wrap;
     max-width: 800px;
@@ -273,6 +272,7 @@ form .submitbutton {
 .rating_comment {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .rating_comment .post_rating {
