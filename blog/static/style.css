@@ -242,10 +242,13 @@ form .submitbutton {
 .indipost .postimg_inpost .detailed_description {
     font-family: "Karla", sans-serif;
     white-space: pre-wrap;
+    text-align: left;
+    text-indent: 10px;
     max-width: 800px;
     object-fit: contain;
     padding:20px;
     line-height: 30px;
+    font-size: 17px;
 }
 
 .indipost .post_info {
@@ -282,7 +285,7 @@ form .submitbutton {
     align-items:baseline;
 }
 
-.rating_comment .post_rating p {
+.rating_comment .post_rating {
     font-size: 17px;
 }
 
@@ -297,6 +300,7 @@ form .submitbutton {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-size: 17px;
 }
 
 .comment_text .indi_comment {
@@ -311,7 +315,7 @@ form .submitbutton {
 }
 
 .comment_text .indi_comment h5 {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .back_to_top{
@@ -369,7 +373,7 @@ form .submitbutton {
 .privacycontent {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 700px;
     white-space: pre-wrap;
     margin: auto;
     font-weight: 500;
@@ -377,4 +381,17 @@ form .submitbutton {
 
 .privacycontent h3 {
     font-weight: 700;
+}
+
+.disclaimer {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.disclaimer p {
+    font-weight: normal;
 }

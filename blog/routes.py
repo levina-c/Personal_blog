@@ -97,6 +97,10 @@ def logout():
 def privacypolicy():
   return render_template('privacypolicy.html', title="Privacy Policy")
 
+@app.route("/disclaimer")
+def disclaimer():
+  return render_template('disclaimer.html', title="Disclaimer")
+
 @app.route("/loginerror")
 def loginerror():
   return render_template('loginerror.html', title="Login failed")
