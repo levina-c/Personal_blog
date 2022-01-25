@@ -20,7 +20,14 @@ body{
     margin: auto;
 }
 
-.home #pers_greet{
+.home h2{
+    text-align: center;
+    font-size:25px;
+    max-width: 800px;
+    padding-bottom: 40px;
+}
+
+#pers_greet{
     display: flex;
     flex-wrap:wrap;
     flex-direction: column;
@@ -29,7 +36,7 @@ body{
     font-size:17px;
     max-width: 700px;
     margin:auto;
-    padding-bottom: 40px;
+    
 }
 
 .home .sort_by {
@@ -48,12 +55,14 @@ body{
     flex-direction: column;
     width: 80%;
     overflow: hidden;
+    row-gap: 20px;
 }
 
-.home .blog_post .postimg_inpost {
+.home .blog_post img {
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
+    padding-top: 20px;
 }
 
 .home .blog_post .blog_text{
@@ -155,6 +164,11 @@ footer .contacts{
     margin-bottom: -3px;
 }
 
+footer #copyright{
+    text-align: center;
+    line-height: 15px;
+}
+
 hr {
     width: 60%;
     height: 1px;
@@ -219,11 +233,20 @@ form .submitbutton {
     max-height: 100%;
 }
 
-.indipost .postimg_inpost pre {
+.indipost .postimg_inpost {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+}
+
+.indipost .postimg_inpost .detailed_description {
+    /* text-align:justify; */
     font-family: "Karla", sans-serif;
+    white-space: pre-wrap;
+    max-width: 800px;
+    object-fit: contain;
+    padding:20px;
+    line-height: 30px;
 }
 
 .indipost .post_info {
@@ -234,8 +257,8 @@ form .submitbutton {
     column-gap: 30px;
 }
 
-.indipost .post_in_post_content .post_info #Post_inpost_title {
-    font-size: 25px;
+.indipost .post_in_post_content .post_info .post_title {
+    font-size: 30px;
 }
 
 .indipost .post_in_post_content .post_info .author {
@@ -250,7 +273,6 @@ form .submitbutton {
 .rating_comment {
     display: flex;
     flex-direction: column;
-
 }
 
 .rating_comment .post_rating {
@@ -264,7 +286,7 @@ form .submitbutton {
     font-size: 17px;
 }
 
-.comment_count {
+.comment_text .comment_count {
     display: flex;
     justify-content: center;
     padding-top: 30px;
@@ -344,3 +366,15 @@ form .submitbutton {
     font-size: 17px;
 }
 
+.privacycontent {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    white-space: pre-wrap;
+    margin: auto;
+    font-weight: 500;
+}
+
+.privacycontent h3 {
+    font-weight: 700;
+}

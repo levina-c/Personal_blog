@@ -1,9 +1,0 @@
-{% extends "layout.html" %}
-{% block content %}
-<h1>You are logged in now! Redirecting to home page in 3 seconds ...</h1>
-<script>
-    let countdodwn = setTimeout(function () {
-        window.location.href = "{{ url_for('home') }}" ;
-        window.clearTimeout(countdown)},3000);
-</script>
-{% endblock content %}

@@ -20,6 +20,7 @@ class Post(db.Model):
   title = db.Column(db.Text, nullable=False)
   content = db.Column(db.Text, nullable=False)
   image_file = db.Column(db.String(40), nullable=False, default='default.jpg')
+  alt_tag = db.Column(db.String(40), nullable=False)
   author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
   comment = db.relationship('Comment', backref='post', lazy='dynamic') 
   rating = db.relationship('Rating', backref='post', lazy='dynamic')

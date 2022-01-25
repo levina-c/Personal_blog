@@ -64,8 +64,8 @@ def register():
     db.session.commit()
     login_new_user = User.query.filter_by(email=user_reg_form.email.data).first()
     login_user(login_new_user)
-    flash('Registration successful!')
-    return redirect(url_for('registered'))
+    flash('Registration successful! You are now logged in.')
+    return redirect(url_for('home'))
     
   return render_template('register.html',title='Register',user_reg_form=user_reg_form)
 
@@ -99,4 +99,9 @@ def privacypolicy():
 
 @app.route("/loginerror")
 def loginerror():
-  return render_template('loginerror.html', title="Log in failed")
+  return render_template('loginerror.html', title="Login failed")
+
+@app.errorhandler(404)
+def page_not_exist(e):
+  return render_template('404.html', title="Page Not Exist")
+

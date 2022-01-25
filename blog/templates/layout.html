@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="author" content="Levina Chan">
+  <meta name="keywords" content="software development, UX, UI, frontend developer, HTML, CSS, Javascript, Flask, Python">
+  <meta name="description" content="This is Levina Chan's personal portfolio.">
   <script type=text/javascript src="{{ url_for('static', filename='javascript.js') }}"></script>
   <link rel=stylesheet type=text/css href="{{ url_for('static',
   filename='style.css') }}">
@@ -26,6 +29,15 @@
     </nav>
   </header>
   <hr id="navbarhr"></hr>
+  <div id="pers_greet">
+    {% if current_user.is_anonymous %}
+      <h1>Hello, Guest!</h1>
+    {% endif %}
+  
+    {% if current_user.is_authenticated %}
+      <h1>Hello, {{ current_user.first_name }}!</h1>
+    {% endif %}
+  </div>
   <div class="flash_messages">
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -43,11 +55,14 @@
   <footer id="footer">
     <div class="contacts">
       <p>Contact Details:</p>
-      <p>Email: <a href="mailto: levina@levina.com">levina@levina.com</a></p>
-      <p>Linkedin: <a href="www.linkedin.com/in/levina">www.linkedin.com/in/levina</a></p>
+      <p>Email: <a target="_top" href="mailto:chant8@cardiff.ac.uk">chant8@cardiff.ac.uk</a></p>
+      <p>Linkedin: <a href="https://www.linkedin.com/in/levina-chan">www.linkedin.com/in/levina-chan</a></p>
     </div>
     <p id="privacypolicy"><a href="{{ url_for('privacypolicy') }}">Privacy Policy</a></p>
-    <p id="copyright">©2022 by Levina Chan</p>
+    <div id="copyright">
+      <p>All materials copyrighted to Levina Chan belong to Levina Chan</p>
+      <p>©2022 by Levina Chan</p>
+    </div>
   </footer>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <div class="indipost">
     <div class="post_in_post_content">
         <div class="post_info">
-            <h3 class="post_title" id="Post_inpost_title">{{ post.title }}</h3>
+            <h3 class="post_title">{{ post.title }}</h3>
             <h3 class="author" >Author: {{ post.user.username }}</h3>
         </div>
         <h3 class="avg_rating">Rating: {{ avg_score|round(1, 'ceil') }}</h3>  
     </div>
     <div class="postimg_inpost">
-        <img src="{{ url_for('static', filename='img/' + post.image_file) }}">
+        <img src="{{ url_for('static', filename='img/' + post.image_file) }}" alt="{{ post.alt_tag }}">
         <pre class="detailed_description">
             {{ post.content }}
         </pre>
@@ -25,23 +25,23 @@
         {% endfor %}
         <input type="submit" value="Rate">
     </form>
-    <form class="comment_box" method="POST" action="">
-        {{ commentBox.csrf_token }}
-        <p>{{ commentBox.content.label }}</p>
-        <p>{{ commentBox.content(rows='8', cols='50') }}</p>
-        <input type="submit" value="Post">
-    </form>
-</div>
+    <div class="comment_text">
+        <form method="POST" action="">
+            {{ commentBox.csrf_token }}
+            <p>{{ commentBox.content.label }}</p>
+            <p>{{ commentBox.content(rows='8', cols='50') }}</p>
+            <input type="submit" value="Post">
+        </form>
 {% endif %}
-<h4 class="comment_count">{{ post.comment.count() }} comment(s)</h4>
-<div class="comment_text">
-    {% for comment in post.comment %}
-        <hr>
-        <span class="indi_comment">
-            <h5>{{ comment.user.username }}: </h5> &nbsp
-            <p>{{ comment.content }}</p>
-        </span>
-    {% endfor %}
+        <h4 class="comment_count">{{ post.comment.count() }} comment(s)</h4>
+        {% for comment in post.comment %}
+            <hr>
+            <span class="indi_comment">
+                <h5>{{ comment.user.username }}: </h5> &nbsp
+                <p>{{ comment.content }}</p>
+            </span>
+        {% endfor %}
+    </div>
 </div>
 <div class="to_posts">
     {% if post.id > 1 %}
