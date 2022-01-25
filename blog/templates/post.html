@@ -32,7 +32,9 @@
             <p>{{ commentBox.content(rows='8', cols='50') }}</p>
             <input type="submit" value="Post">
         </form>
+    </div>
 {% endif %}
+    <div class="comment_text">
         <h4 class="comment_count">{{ post.comment.count() }} comment(s)</h4>
         {% for comment in post.comment %}
             <hr>
