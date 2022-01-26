@@ -19,9 +19,9 @@
 <div class="rating_comment">
     <form class="post_rating" method="POST" action="">
         {{ ratingscale.csrf_token }}
-        <h4>{{ ratingscale.star.label }}</h4>
+        <h4>{{ ratingscale.star.label }}: </h4>
         {% for star in ratingscale.star%}
-            <P>{{ star.label }}: {{ star }}</p>
+        <P>{{ star.label }} <img src="{{ url_for('static', filename='img/' + '1.png' ) }}">: {{ star }}</p>
         {% endfor %}
         <input type="submit" value="Rate">
     </form>

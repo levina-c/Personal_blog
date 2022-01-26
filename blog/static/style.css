@@ -183,10 +183,6 @@ hr {
     margin-top:0;
 }
 
-img {
-    min-width: 100%;
-}
-
 h1 {
     text-align: center;
 }
@@ -281,12 +277,13 @@ form .submitbutton {
 .rating_comment .post_rating {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    font-size: 17px;
     column-gap: 20px;
-    align-items:baseline;
 }
 
-.rating_comment .post_rating {
-    font-size: 17px;
+.rating_comment .post_rating img {
+    width: 20px;
 }
 
 .comment_text .comment_count {
@@ -395,3 +392,4 @@ form .submitbutton {
 .disclaimer p {
     font-weight: normal;
 }
+
