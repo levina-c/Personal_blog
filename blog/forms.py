@@ -33,8 +33,7 @@ class CommentForm(FlaskForm):
 
 
 class RatingForm(FlaskForm):
-  style={'class': 'starstyle'}
-  star = RadioField('Rate this Post', validators=[InputRequired()], choices=[('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], render_kw=style)
+  star = RadioField('Rate this Post', validators=[InputRequired()], choices=[('1','1'),('2','2'),('3','3'),('4','4'),('5','5')])
   submit = SubmitField('Rate')
 
   def validate_user_id(self, user_id, post_id, current_user):
